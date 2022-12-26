@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        vector<int> ans;
+        int end=digits.size()-1,sum=0,carry=1;
+        while(end>=0)
+        {
+            sum=digits[end]+carry;
+            if(sum<10)
+            {
+                ans.push_back(sum);
+                end--;
+                carry=0;
+                break;
+            }
+            else
+            {   
+                ans.push_back(0);
+                end--;
+            }
+        }
+        while(end>=0)
+        {
+            ans.push_back(digits[end--]);
+        }
+        while(carry==1)
+        {
+            ans.push_back(carry);
+            carry=0;
+        }
+        int i=0,j=ans.size()-1;
+        while(i<j)
+        {
+            swap(ans[i++],ans[j--]);
+        }
+        return ans;
+    }
+};
